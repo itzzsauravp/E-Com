@@ -1,5 +1,6 @@
 type Rating = {
   rate: number;
+  count: number;
 };
 
 type Product = {
@@ -15,9 +16,8 @@ type Product = {
 interface Items {
   items: Product;
 }
-
+import RatingStart from "./RatingStart";
 const ProductCard: React.FC<Items> = ({ items }) => {
-  console.log(items);
   return (
     <div className="h-90 flex flex-col items-center p-2 border-2 rounded-md shadow-md hover:shadow-xl duration-200">
       <div className="object-fill">
@@ -29,13 +29,17 @@ const ProductCard: React.FC<Items> = ({ items }) => {
           <div className="mt-1">
             <p className="text-tLight">Price: $ {items.price}</p>
             <p className="text-tLight">Rating: {items.rating?.rate} / 5</p>
+            <p className="text-tLight">Sold: {items.rating?.count}</p>
+            <p>
+              <RatingStart rating={items.rating?.rate} />
+            </p>
           </div>
         </div>
         <div className="flex items-center justify-center mt-5 gap-10">
-          <button className="bottom-[5px] left-[70px] bg-white text-etBlue font-semibold px-4 py-2 border-[1px] border-etBlue">
+          <button className="bottom-[5px] left-[70px] bg-white text-etBlue font-semibold px-4 py-2 border-[1px] border-etBlue hover:shadow-md hover:shadow-slate-400 duration-200">
             View Details
           </button>
-          <button className="bottom-[5px] left-[70px] bg-etBlue text-white font-semibold px-4 py-2 p-2">
+          <button className="bottom-[5px] left-[70px] bg-etBlue text-white font-semibold px-4 py-2 p-2 hover:shadow-md hover:shadow-slate-400 duration-200">
             Add to Cart
           </button>
         </div>

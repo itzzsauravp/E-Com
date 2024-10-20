@@ -31,17 +31,17 @@ const ShopPage = () => {
           </li>
         </ul>
       </div>
-      <div className="grid grid-cols-5 gap-8 mt-7 mx-auto sm:max-md:grid-cols-1 md:max-lg:grid-cols-2 lg:max-xl:grid-cols-3">
+      <div className="grid grid-cols-3 gap-8 mt-7 mx-auto sm:max-md:grid-cols-1 md:max-lg:grid-cols-2 lg:max-xl:grid-cols-3">
         {filterItems === null
-          ? unfilteredStoreData?.map((items, index) => (
-              <ProductCard key={index} items={items} />
-            ))
+          ? unfilteredStoreData
+              ?.sort(() => Math.random() - 0.5)
+              ?.map((items, index) => <ProductCard key={index} items={items} />)
           : storeData
+              ?.sort(() => Math.random() - 0.5)
               ?.filter((item) => item.category === filterItems)
               ?.map((items, index) => (
                 <ProductCard key={index} items={items} />
               ))}
-        {}
       </div>
     </section>
   );

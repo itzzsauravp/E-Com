@@ -14,7 +14,7 @@ const CardCollection: React.FC<{ isTopSeller: boolean }> = ({
     tempArry = storeData?.slice(num1, num2).sort(() => Math.random() - 0.5);
   }
   return (
-    <div className="mt-8 grid grid-cols-4 gap-9 m-auto sm:max-md:grid-cols-2">
+    <div className="mt-8 grid grid-cols-4 gap-9 m-auto sm:max-md:grid-cols-1 md:max-lg:grid-cols-2">
       {tempArry?.map((item, index) => (
         <ItemCard key={index} item={item} />
       ))}

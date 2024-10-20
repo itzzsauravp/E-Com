@@ -4,7 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
-    <nav className="flex items-end justify-between m-auto p-4 sm:max-md:flex-col sm:max-md:gap-5 sm:max-md:w-full sm:max-md:items-center">
+    <nav className="flex items-end justify-between m-auto mt-4 mb-1 sm:max-md:flex-col sm:max-md:gap-5 sm:max-md:w-full sm:max-md:items-center">
       <div className="text-3xl font-lato font-bold">NorthStar</div>
       <ul className="flex gap-5 font-bold uppercase font-arimo">
         <NavLink
@@ -40,16 +40,16 @@ const NavBar = () => {
           Contact Us
         </NavLink>
       </ul>
-      <div className="flex gap-3 text-[1.2rem] sm:max-md:text-2xl sm:max-md:gap-10">
+      <div className="flex gap-3 text-[1.5rem] sm:max-md:text-2xl sm:max-md:gap-10">
         <button>
           <FiUser />
         </button>
-        <button className="relative">
+        <NavLink to="/cart" className="relative">
           <IoBagRemoveOutline />
           <span className="absolute text-[0.8rem] bg-etBlue text-white rounded-full h-5 w-5 flex items-center justify-center top-[-9px] right-[-9px] ">
             10
           </span>
-        </button>
+        </NavLink>
         <button className="">
           <RxHamburgerMenu />
         </button>

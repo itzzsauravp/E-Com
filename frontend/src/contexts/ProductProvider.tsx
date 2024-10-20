@@ -36,6 +36,7 @@ export const ProductProvier = ({ children }: { children: ReactNode }) => {
     const getStoreData = async () => {
       const data = await fetchStoreData();
       if (isMounted) setStoreData(data);
+      console.log(data);
     };
     getStoreData();
 
