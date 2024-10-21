@@ -5,9 +5,6 @@ import ProductCard from "../components/Reusable/ProductCard";
 const ShopPage = () => {
   const { storeData, categoryData } = useProductContext();
   const [filterItems, setFilterItem] = useState<string | null>(null);
-  const handleCategorySelect = (item: string | null) => {
-    setFilterItem(item);
-  };
   const unfilteredStoreData = storeData;
   return (
     <section className="">
@@ -17,14 +14,14 @@ const ShopPage = () => {
             <li
               className="text-white font-semibold font-lato uppercase hover:underline hover:text-black duration-200"
               key={index}
-              onClick={() => handleCategorySelect(item)}
+              onClick={() => setFilterItem(item)}
             >
               {item}
             </li>
           ))}
           <li
             className="text-white font-semibold font-lato uppercase hover:underline hover:text-black duration-200"
-            onClick={() => handleCategorySelect(null)}
+            onClick={() => setFilterItem(null)}
           >
             {" "}
             All

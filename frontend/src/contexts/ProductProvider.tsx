@@ -21,8 +21,11 @@ interface Context {
   categoryData: Category | undefined;
 }
 
-const ProductContext = createContext<Context | undefined>(undefined);
-export const ProductProvier = ({ children }: { children: ReactNode }) => {
+const ProductContext = createContext<Context | undefined>({
+  storeData: [],
+  categoryData: [],
+});
+const ProductProvier = ({ children }: { children: ReactNode }) => {
   const [storeData, setStoreData] = useState();
   const [categoryData, setCategoryData] = useState();
   useEffect(() => {
@@ -36,7 +39,6 @@ export const ProductProvier = ({ children }: { children: ReactNode }) => {
     const getStoreData = async () => {
       const data = await fetchStoreData();
       if (isMounted) setStoreData(data);
-      console.log(data);
     };
     getStoreData();
 
@@ -52,4 +54,5 @@ export const ProductProvier = ({ children }: { children: ReactNode }) => {
   );
 };
 
+export { ProductProvier };
 export default ProductContext;
