@@ -1,5 +1,5 @@
 import Button from "../Reusable/Button";
-import { CartItem } from "../../contexts/CartProvider";
+import { CartItem } from "../../@types/types";
 const CartTotals: React.FC<{ cartItems: CartItem[] }> = ({ cartItems }) => {
   return (
     <div className="mt-12">

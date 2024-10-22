@@ -1,14 +1,4 @@
-interface ButtonProps {
-  value: string;
-  bgColor: string;
-  txtColor: string;
-  px: number;
-  py: number;
-  mt: number;
-  mb?: number;
-  func?: () => void;
-}
-
+import { ButtonProps } from "../../@types/types";
 const Button: React.FC<ButtonProps> = ({
   value,
   bgColor,

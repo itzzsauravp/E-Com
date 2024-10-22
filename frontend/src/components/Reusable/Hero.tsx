@@ -1,9 +1,7 @@
-interface HeroComponentProps {
-  img: string;
-  textOnImage?: string;
-}
-
-const Hero: React.FC<HeroComponentProps> = ({ img, textOnImage }) => {
+const Hero: React.FC<{ img: string; textOnImage?: string }> = ({
+  img,
+  textOnImage,
+}) => {
   return (
     <div className="flex justify-center sm:max-md:hidden bg-slate-200">
       <div className="relative">

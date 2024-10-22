@@ -1,45 +1,31 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { fetchCategoryData, fetchStoreData } from "../api/apiCalls";
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
-};
+import { Context, Product } from "../@types/types";
+import { Category } from "../@types/types";
+const ProductContext = createContext<Context | undefined>(undefined);
 
-type Category = (
-  | "electronics"
-  | "jewelery"
-  | "men's clothing"
-  | "women's clothing"
-)[];
+const ProductProvider = ({ children }: { children: ReactNode }) => {
+  const [storeData, setStoreData] = useState<Product[] | undefined>([]); // Initialize as empty array
+  const [categoryData, setCategoryData] = useState<Category | undefined>([]); // Adjust based on actual data
 
-interface Context {
-  storeData: Product[] | undefined;
-  categoryData: Category | undefined;
-}
+  const addWishListProp = (data: Product[]) => {
+    return data.map((item) => ({ ...item, isInWishList: false }));
+  };
 
-const ProductContext = createContext<Context | undefined>({
-  storeData: [],
-  categoryData: [],
-});
-const ProductProvier = ({ children }: { children: ReactNode }) => {
-  const [storeData, setStoreData] = useState();
-  const [categoryData, setCategoryData] = useState();
   useEffect(() => {
-    let isMounted: boolean = true;
+    let isMounted = true;
+
     const getCategory = async () => {
       const data = await fetchCategoryData();
       if (isMounted) setCategoryData(data);
     };
-    getCategory();
 
     const getStoreData = async () => {
-      const data = await fetchStoreData();
-      if (isMounted) setStoreData(data);
+      const data: Product[] = await fetchStoreData();
+      if (isMounted) setStoreData(addWishListProp(data)); // Correct type and data fetching
     };
+
+    getCategory();
     getStoreData();
 
     return () => {
@@ -47,12 +33,28 @@ const ProductProvier = ({ children }: { children: ReactNode }) => {
     };
   }, []);
 
+  const addToWishList = (item: Product) => {
+    setStoreData((prevData) =>
+      prevData?.map((product) =>
+        product.id === item.id ? { ...product, isInWishList: true } : product
+      )
+    );
+  };
+
+  const removeFromWishList = (item: Product) => {
+    setStoreData((prevData) =>
+      prevData?.filter((product) => product.id !== item.id)
+    );
+  };
+
   return (
-    <ProductContext.Provider value={{ storeData, categoryData }}>
+    <ProductContext.Provider
+      value={{ storeData, categoryData, addToWishList, removeFromWishList }}
+    >
       {children}
     </ProductContext.Provider>
   );
 };
 
-export { ProductProvier };
+export { ProductProvider };
 export default ProductContext;

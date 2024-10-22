@@ -1,32 +1,5 @@
-import founder1 from "../../assets/Images/founder1.jpg";
-import founder2 from "../../assets/Images/founder2.jpg";
-import founder3 from "../../assets/Images/founder3.jpg";
-import founder4 from "../../assets/Images/founder4.jpg";
-
-interface FounderArray {
-  photo: string;
-  name: string;
-}
-
+import { foundersArray } from "../../data/staticData";
 const Founders = () => {
-  const foundersArray: Array<FounderArray> = [
-    {
-      photo: founder1,
-      name: "Marcus Bennett",
-    },
-    {
-      photo: founder2,
-      name: "David Chen",
-    },
-    {
-      photo: founder3,
-      name: "Raj Patel",
-    },
-    {
-      photo: founder4,
-      name: "Sarah Rodriguez",
-    },
-  ];
   return (
     <div className="bg-eSmoke">
       <h1 className="text-center mb-16 text-3xl text-tDark font-lato font-bold">

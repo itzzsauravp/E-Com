@@ -2,7 +2,7 @@ import RatingStart from "../components/Reusable/RatingStart";
 import Button from "../components/Reusable/Button";
 import DescAndReview from "../components/ProductDetailPage/DescAndReview";
 import { useLocation } from "react-router-dom";
-import useCart from "../Hooks/useCart";
+import useCart from "../hooks/useCart";
 const SIZE = [
   "Select Size",
   "Small (s)",

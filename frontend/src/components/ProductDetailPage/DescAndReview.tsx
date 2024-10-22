@@ -1,15 +1,5 @@
 import { useState } from "react";
-
-const TABS = [
-  {
-    label: "Description",
-    content: "This is the product Description ",
-  },
-  {
-    label: "Reviews",
-    content: "This is the product Reviews ",
-  },
-];
+import { TABS } from "../../data/staticData";
 
 const DescAndReview = () => {
   const [activeTab, setActiveTab] = useState(0);

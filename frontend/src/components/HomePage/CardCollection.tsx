@@ -1,5 +1,5 @@
 import ItemCard from "./ItemCard";
-import useProductContext from "../../Hooks/useProductContext";
+import useProductContext from "../../hooks/useProductContext";
 import { generateNumbersWithDifference } from "../../utils/utils";
 const CardCollection: React.FC<{ isTopSeller: boolean }> = ({
   isTopSeller,

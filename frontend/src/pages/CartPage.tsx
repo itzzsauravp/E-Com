@@ -1,11 +1,11 @@
-import useCart from "../Hooks/useCart";
+import useCart from "../hooks/useCart";
 import { useEffect, useState } from "react";
-import { CartItem } from "../contexts/CartProvider";
+import { CartItem } from "../@types/types";
 import CartTotals from "../components/CartPage/CartTotals";
 const CartPage = () => {
   const { cart } = useCart();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
+  const cartTitles = ["Product", "Name", "Price", "Quantity", "Total"];
   useEffect(() => {
     const cartItemsWithQuantity = cart.map((item) => ({
       ...item,
@@ -30,11 +30,9 @@ const CartPage = () => {
       </span>
       <div className="w-full p-4 mt-12">
         <div className="grid grid-cols-5 uppercase font-bold font-arimo">
-          <p>Product</p>
-          <p>Name</p>
-          <p>Price</p>
-          <p>Quantity</p>
-          <p>Total</p>
+          {cartTitles.map((_, index) => (
+            <p key={index}>{_}</p>
+          ))}
         </div>
         {cartItems.map((item) => (
           <div

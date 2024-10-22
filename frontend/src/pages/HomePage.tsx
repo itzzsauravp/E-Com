@@ -30,6 +30,7 @@ const HomePage = () => {
         <NavLink
           to="/shop"
           className="bg-etBlue text-white px-8 py-4 uppercase font-lato"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           Shop Now
         </NavLink>

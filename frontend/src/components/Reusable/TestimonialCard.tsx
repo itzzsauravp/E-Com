@@ -1,15 +1,6 @@
-type Data = {
-  photo: string;
-  desc: string;
-  name: string;
-};
-
-interface TestimonialCardProps {
-  data: Data;
-}
-
+import { Data } from "../../@types/types";
 import apos from "../../assets/Images/apos.png";
-const TestimonialCard: React.FC<TestimonialCardProps> = ({ data }) => {
+const TestimonialCard: React.FC<{ data: Data }> = ({ data }) => {
   return (
     <div className="flex flex-col justify-center items-center border-2 rounded-md gap-5 w-[80%] p-4 sm:max-md:w-full">
       <div className="p-2 h-56 w-56 sm:max-md:p-0 sm:max-md:h-32 sm:max-md:w-32">

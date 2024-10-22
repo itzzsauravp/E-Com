@@ -1,9 +1,4 @@
-interface BuyNoTaggedItemProp {
-  img: string;
-  setHoverButton: (arg: number | null) => void;
-  hoverButton: number | null;
-  uniqueID: number;
-}
+import { BuyNoTaggedItemProp } from "../../@types/types";
 const BuyNowTaggedItem: React.FC<BuyNoTaggedItemProp> = ({
   img,
   setHoverButton,
@@ -15,7 +10,9 @@ const BuyNowTaggedItem: React.FC<BuyNoTaggedItemProp> = ({
       <img
         src={img}
         alt=""
-        className={`${hoverButton === uniqueID ? "grayscale-0 duration-300" : "grayscale"}`}
+        className={`${
+          hoverButton === uniqueID ? "grayscale-0 duration-300" : "grayscale"
+        }`}
       />
       <button
         className={

@@ -7,6 +7,8 @@ import ShopPage from "./pages/ShopPage";
 import NoPage404 from "./pages/NoPage404";
 import CartPage from "./pages/CartPage";
 import ProductDetail from "./pages/ProductDetail";
+import LoginPage from "./pages/LoginPage";
+import WishList from "./pages/WishListPage";
 const App = () => {
   return (
     <Routes>
@@ -17,6 +19,8 @@ const App = () => {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/wishlist" element={<WishList />} />
       </Route>
       <Route path="*" element={<NoPage404 />} />
     </Routes>

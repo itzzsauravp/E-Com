@@ -1,13 +1,5 @@
-type ProductInHome = {
-  image: string;
-  title: string;
-  price: number;
-};
-
-interface ItemInHome {
-  item: ProductInHome;
-}
-const ItemCard: React.FC<ItemInHome> = ({ item }) => {
+import { ProductInHome } from "../../@types/types";
+const ItemCard: React.FC<{item: ProductInHome}> = ({ item }) => {
   return (
     <div className="h-90 flex flex-col items-center p-2 border-2 rounded-md shadow-md hover:shadow-xl duration-200">
       <div className="object-fill">
