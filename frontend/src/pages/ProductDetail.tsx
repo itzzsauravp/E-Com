@@ -3,6 +3,8 @@ import Button from "../components/Reusable/Button";
 import DescAndReview from "../components/ProductDetailPage/DescAndReview";
 import { useLocation } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import { FaHeart } from "react-icons/fa";
+import useProductContext from "../hooks/useProductContext";
 const SIZE = [
   "Select Size",
   "Small (s)",
@@ -16,11 +18,12 @@ const ProdDetails = [
   { name: "Tags", value: "Modern, Design, cotton" },
 ];
 
+
 const ProductDetail = () => {
   const location = useLocation();
   const product = location.state.product;
-  const { cart, addToCart } = useCart();
-  console.log(cart);
+  const { addToCart } = useCart();
+  const {addToWishList} = useProductContext();
   return (
     <section>
       <div className="flex gap-24 mt-12">
@@ -28,9 +31,19 @@ const ProductDetail = () => {
           <img src={product.image} alt="" className="h-full w-full" />
         </div>
         <div className="w-[50%]">
-          <h1 className="text-3xl font-bold font-lato mb-5 ">
-            {product.title}
+          <h1
+            className={`text-3xl font-bold font-lato flex gap-2 items-center ${
+              product.isInWishList ? "mb-2" : "mb-5"
+            }`}
+          >
+            {product.title}{" "}
+            <span className="text-red-500">
+              {product.isInWishList && <FaHeart />}
+            </span>
           </h1>
+          {product.isInWishList && (
+            <p className="text-tLight mb-5">This items is in your wishlist</p>
+          )}
           <RatingStart rating={product.rating.rate} />
           <p className="mt-5 text-2xl">
             <span className="line-through text-tLight">
@@ -48,15 +61,28 @@ const ProductDetail = () => {
               ))}
             </select>
           )}
-          <Button
-            value="Add to Cart"
-            bgColor="#024E82"
-            txtColor="white"
-            px={2}
-            py={1}
-            mt={2}
-            func={() => addToCart(product)}
-          />
+          <div className="flex gap-4">
+            <Button
+              value="Add to Cart"
+              bgColor="#024E82"
+              txtColor="white"
+              px={2}
+              py={1}
+              mt={2}
+              border="none"
+              func={() => addToCart(product)}
+            />
+            <Button
+              value="Add to WishList"
+              bgColor="white"
+              txtColor="#024E82"
+              px={2}
+              py={1}
+              mt={2}
+              border="1px solid"
+              func={() => addToWishList(product)}
+            />
+          </div>
           <div className="mt-5">
             {ProdDetails.map((_, index) => (
               <p key={index} className="text-tLight">

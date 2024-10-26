@@ -9,6 +9,8 @@ import CartPage from "./pages/CartPage";
 import ProductDetail from "./pages/ProductDetail";
 import LoginPage from "./pages/LoginPage";
 import WishList from "./pages/WishListPage";
+import ProtectedRoutes from "./pages/ProtectedRoutes";
+import ProfilePage from "./pages/ProfilePage";
 const App = () => {
   return (
     <Routes>
@@ -21,6 +23,14 @@ const App = () => {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/wishlist" element={<WishList />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoutes>
+              <ProfilePage />
+            </ProtectedRoutes>
+          }
+        />
       </Route>
       <Route path="*" element={<NoPage404 />} />
     </Routes>

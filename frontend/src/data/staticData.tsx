@@ -21,6 +21,10 @@ import mastercard from "../assets/Logo/mastercard.png";
 import paypal from "../assets/Logo/paypal.png";
 import visaelectron from "../assets/Logo/visaelectron.png";
 
+// NavBar Links Data (NavBar.tsx)
+import { FiUser } from "react-icons/fi";
+import { IoBagRemoveOutline } from "react-icons/io5";
+
 // Founders Array Data (Founders.tsx)
 export const foundersArray: { photo: string; name: string }[] = [
   {
@@ -127,4 +131,17 @@ export const FooterData: {
     desc: [""],
     isNewsLetter: true,
   },
+];
+
+// NavBar Links Data (NavBar.tsx)
+export const NavLinksArray = [
+  { name: "Home", to: "/" },
+  { name: "Shop", to: "/shop" },
+  { name: "About", to: "/about" },
+  { name: "Contact Us", to: "/contactus" },
+];
+
+export const NavLinkReactIcons = [
+  { name: <FiUser />, to: "/profile" },
+  { name: <IoBagRemoveOutline />, to: "/cart", showsCartItemsNumber: true },
 ];

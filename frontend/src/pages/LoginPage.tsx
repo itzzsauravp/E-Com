@@ -1,7 +1,7 @@
 import loginImg from "../assets/Images/loginImg.webp";
 import { FormEvent, useState } from "react";
 import { userLogin } from "../api/apiCalls";
-
+import { useNavigate } from "react-router-dom";
 type UserLoginInfo = {
   username: string;
   password: string;
@@ -14,6 +14,8 @@ const LoginPage = () => {
     username: "johnd",
     password: "m38rmF$",
   });
+
+  const navigate = useNavigate();
 
   const handleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInfo((prev) => ({ ...prev, username: e.target.value }));
@@ -29,13 +31,13 @@ const LoginPage = () => {
       const { token } = result;
       if (token && rememberMe) {
         localStorage.setItem("token", token);
-        console.log("Token stored in localStorage");
+        navigate("/profile");
       } else if (token && !rememberMe) {
         sessionStorage.setItem("token", token);
-        console.log("Token stored in sessionStorage");
+        navigate("/profile");
       }
     } else {
-      console.log("No valid login result or token!!");
+      console.error("No valid login result or token!!");
     }
   };
 

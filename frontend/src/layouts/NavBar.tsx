@@ -1,22 +1,13 @@
-import { FiUser } from "react-icons/fi";
-import { IoBagRemoveOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import NAVLink from "../components/Reusable/NAVLink";
 import HamburgerPopOver from "../components/HamburgerPopOver";
 import { useEffect, useRef, useState } from "react";
 import useProductContext from "../hooks/useProductContext";
+import { NavLinksArray, NavLinkReactIcons } from "../data/staticData";
+import { useSelector } from "react-redux";
+import { GiWallet } from "react-icons/gi";
+import { selectBalance } from "../../store/balanceSlice";
 const NavBar = () => {
-  const NavLinksArray = [
-    { name: "Home", to: "/" },
-    { name: "Shop", to: "/shop" },
-    { name: "About", to: "/about" },
-    { name: "Contact Us", to: "/contactus" },
-  ];
-
-  const NavLinkReactIcons = [
-    { name: <FiUser />, to: "/profile" },
-    { name: <IoBagRemoveOutline />, to: "/cart", showsCartItemsNumber: true },
-  ];
   const [hamburgerPopover, setHamburgerPopover] = useState<boolean>(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const handleClickOutside = (e: MouseEvent) => {
@@ -26,6 +17,7 @@ const NavBar = () => {
     }
   };
   const { storeData } = useProductContext();
+  const balance = useSelector(selectBalance);
   const wishListLength: number | undefined = storeData?.filter(
     (item) => item.isInWishList === true
   ).length;
@@ -45,7 +37,7 @@ const NavBar = () => {
       <ul className="flex gap-5 font-bold uppercase font-arimo">
         <NAVLink NavLinkElements={NavLinksArray} />
       </ul>
-      <div className="flex gap-3 text-[1.5rem] sm:max-md:text-2xl sm:max-md:gap-10">
+      <div className="flex gap-3 text-[1.5rem] sm:max-md:text-2xl sm:max-md:gap-10 items-center">
         <NAVLink NavLinkElements={NavLinkReactIcons} />
         <button
           className="relative"
@@ -63,6 +55,9 @@ const NavBar = () => {
             </span>
           )}
         </button>
+        <span className="text-[1.2rem] text-tDark font-semibold border-2 p-2 flex items-center gap-2">
+          <GiWallet />: ${balance}
+        </span>
       </div>
     </nav>
   );

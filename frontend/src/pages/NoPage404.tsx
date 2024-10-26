@@ -23,7 +23,7 @@ const NoPage404 = () => {
             controls: 0,
             rel: 0,
             showinfo: 0,
-            mute: 0, // Optional: Mute to ensure autoplay works across all browsers
+            mute: 0,
           },
         }}
         onReady={onPlayerReady}

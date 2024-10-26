@@ -8,6 +8,8 @@ const Button: React.FC<ButtonProps> = ({
   mt,
   mb,
   func,
+  border,
+  uppercase,
 }) => {
   // tDark: "#1D1D1D",
   // tLight: "#555555",
@@ -21,13 +23,14 @@ const Button: React.FC<ButtonProps> = ({
     coursor: "poniter",
     marginTop: `${mt}em`,
     marginBottom: `${mb}em`,
+    border: `${border}`,
   };
 
   return (
     <div>
       <button
         style={buttonStyle}
-        className="uppercase"
+        className={uppercase ? "uppercase" : undefined}
         onClick={() => func && func()}
       >
         {value}

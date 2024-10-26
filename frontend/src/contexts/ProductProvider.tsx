@@ -5,8 +5,8 @@ import { Category } from "../@types/types";
 const ProductContext = createContext<Context | undefined>(undefined);
 
 const ProductProvider = ({ children }: { children: ReactNode }) => {
-  const [storeData, setStoreData] = useState<Product[] | undefined>([]); // Initialize as empty array
-  const [categoryData, setCategoryData] = useState<Category | undefined>([]); // Adjust based on actual data
+  const [storeData, setStoreData] = useState<Product[] | undefined>([]);
+  const [categoryData, setCategoryData] = useState<Category | undefined>([]);
 
   const addWishListProp = (data: Product[]) => {
     return data.map((item) => ({ ...item, isInWishList: false }));
@@ -22,7 +22,7 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
 
     const getStoreData = async () => {
       const data: Product[] = await fetchStoreData();
-      if (isMounted) setStoreData(addWishListProp(data)); // Correct type and data fetching
+      if (isMounted) setStoreData(addWishListProp(data));
     };
 
     getCategory();

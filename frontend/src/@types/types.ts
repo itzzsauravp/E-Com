@@ -38,6 +38,8 @@ export interface ButtonProps {
   py: number;
   mt: number;
   mb?: number;
+  border: string;
+  uppercase: boolean;
   func?: () => void;
 }
 
@@ -93,4 +95,5 @@ export interface CartContextType {
   cart: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (itemId: number) => void;
+  clearCart: () => void;
 }

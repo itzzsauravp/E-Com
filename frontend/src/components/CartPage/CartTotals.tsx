@@ -1,6 +1,34 @@
 import Button from "../Reusable/Button";
 import { CartItem } from "../../@types/types";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { makePurchase, selectBalance } from "../../../store/balanceSlice";
+import useCart from "../../hooks/useCart";
 const CartTotals: React.FC<{ cartItems: CartItem[] }> = ({ cartItems }) => {
+  const [totalPrice, setTotalPrice] = useState("0.00");
+  const dispatch = useDispatch();
+  const balance = useSelector(selectBalance);
+  const { clearCart } = useCart();
+  const handlePurchase = () => {
+    if (balance > Number(totalPrice)) {
+      dispatch(makePurchase(Number(totalPrice)));
+      alert("Thankyou for making the purchase");
+      clearCart();
+    } else {
+      alert("You dont have enough balace!!!");
+    }
+  };
+  useEffect(() => {
+    const price = cartItems
+      .reduce(
+        (acc: number, item: CartItem) =>
+          acc + item.price * (item.quantity || 1),
+        0
+      )
+      .toFixed(2);
+    setTotalPrice(price);
+  }, [cartItems]);
+
   return (
     <div className="mt-12">
       <div className="w-[30%]">
@@ -8,49 +36,29 @@ const CartTotals: React.FC<{ cartItems: CartItem[] }> = ({ cartItems }) => {
         <div>
           <p className="flex justify-between p-4 border-b-2">
             <span className="text-tLight">Subtotal</span>
-            <span>
-              $
-              {cartItems
-                .reduce(
-                  (acc: number, item: CartItem) =>
-                    acc + item.price * (item.quantity || 1),
-                  0
-                )
-                .toFixed(2)}
-            </span>
+            <span>${totalPrice}</span>
           </p>
           <p className="flex justify-between p-4 text-tLight">
-            <span>Shopping Fee</span>
+            <span>Shipping Fee</span>
             <span>FREE!!</span>
           </p>
           <p className="flex justify-between p-4 border-t-2">
             <span className="font-bold font-lato">Total</span>
-            <span className="font-bold">
-              $
-              {cartItems
-                .reduce(
-                  (acc: number, item: CartItem) =>
-                    acc + item.price * (item.quantity || 1),
-                  0
-                )
-                .toFixed(2)}
-            </span>
+            <span className="font-bold">${totalPrice}</span>
           </p>
         </div>
       </div>
       <Button
-        value="Proceed to Checkout"
-        bgColor="orange"
+        border="none"
+        value="Purchase Now"
+        bgColor="#024E82"
         txtColor="white"
         px={2}
         py={1}
-        func={() =>
-          alert(
-            "Expect your products to be at your doorstep within 3 Days\nThank You"
-          )
-        }
         mt={2}
         mb={5}
+        func={() => handlePurchase()}
+        uppercase={true}
       />
     </div>
   );

@@ -5,6 +5,7 @@ const CartContext = createContext<CartContextType>({
   cart: [],
   addToCart: () => {},
   removeFromCart: () => {},
+  clearCart: () => {},
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -13,7 +14,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     const val = cart.find((cartItem) => cartItem.id === item.id);
     if (!val) setCart((prevCart) => [...prevCart, item]);
   };
-
+  const clearCart = () => {
+    setCart([]);
+  };
   const removeFromCart = (itemId: number) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
   };
@@ -24,6 +27,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         cart,
         addToCart,
         removeFromCart,
+        clearCart,
       }}
     >
       {children}
