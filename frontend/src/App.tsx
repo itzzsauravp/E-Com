@@ -8,9 +8,12 @@ import NoPage404 from "./pages/NoPage404";
 import CartPage from "./pages/CartPage";
 import ProductDetail from "./pages/ProductDetail";
 import LoginPage from "./pages/LoginPage";
-import WishList from "./pages/WishListPage";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
 import ProfilePage from "./pages/ProfilePage";
+import Wishlist from "./components/ProfilePage/Wishlist";
+import AddBalance from "./components/ProfilePage/AddBalance";
+import OrderHistory from "./components/ProfilePage/OrderHistory";
+import RecentlyBrowsed from "./components/ProfilePage/RecentlyBrowsed";
 const App = () => {
   return (
     <Routes>
@@ -22,7 +25,6 @@ const App = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/wishlist" element={<WishList />} />
         <Route
           path="/profile"
           element={
@@ -30,7 +32,12 @@ const App = () => {
               <ProfilePage />
             </ProtectedRoutes>
           }
-        />
+        >
+          <Route index element={<AddBalance />} />
+          <Route path="order-history" element={<OrderHistory />} />
+          <Route path="recently-browsed" element={<RecentlyBrowsed />} />
+          <Route path="wishlist" element={<Wishlist />} />
+        </Route>
       </Route>
       <Route path="*" element={<NoPage404 />} />
     </Routes>

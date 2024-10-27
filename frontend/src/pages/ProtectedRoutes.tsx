@@ -9,7 +9,7 @@ const ProtectedRoutes: React.FC<{ children: ReactElement }> = ({
 
   useEffect(() => {
     if (!token) {
-      navigate("/getRickRolled");
+      navigate("/login");
     }
   }, [token, navigate]);
 

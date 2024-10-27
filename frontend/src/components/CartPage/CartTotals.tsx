@@ -2,16 +2,21 @@ import Button from "../Reusable/Button";
 import { CartItem } from "../../@types/types";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { makePurchase, selectBalance } from "../../../store/balanceSlice";
+import {
+  addPurchaseItemsToHistory,
+  makePurchase,
+  selectUserBalance,
+} from "../../../store/userSlice";
 import useCart from "../../hooks/useCart";
 const CartTotals: React.FC<{ cartItems: CartItem[] }> = ({ cartItems }) => {
   const [totalPrice, setTotalPrice] = useState("0.00");
   const dispatch = useDispatch();
-  const balance = useSelector(selectBalance);
+  const userBalance = useSelector(selectUserBalance);
   const { clearCart } = useCart();
   const handlePurchase = () => {
-    if (balance > Number(totalPrice)) {
+    if (userBalance > Number(totalPrice)) {
       dispatch(makePurchase(Number(totalPrice)));
+      dispatch(addPurchaseItemsToHistory(cartItems));
       alert("Thankyou for making the purchase");
       clearCart();
     } else {
@@ -27,7 +32,7 @@ const CartTotals: React.FC<{ cartItems: CartItem[] }> = ({ cartItems }) => {
       )
       .toFixed(2);
     setTotalPrice(price);
-  }, [cartItems]);
+  }, [cartItems, dispatch]);
 
   return (
     <div className="mt-12">

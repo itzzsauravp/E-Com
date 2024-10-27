@@ -2,6 +2,8 @@ import loginImg from "../assets/Images/loginImg.webp";
 import { FormEvent, useState } from "react";
 import { userLogin } from "../api/apiCalls";
 import { useNavigate } from "react-router-dom";
+import { getUserName } from "../../store/userSlice";
+import { useDispatch } from "react-redux";
 type UserLoginInfo = {
   username: string;
   password: string;
@@ -14,9 +16,9 @@ const LoginPage = () => {
     username: "johnd",
     password: "m38rmF$",
   });
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  dispatch(getUserName(userInfo.username));
   const handleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInfo((prev) => ({ ...prev, username: e.target.value }));
   };

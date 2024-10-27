@@ -2,6 +2,7 @@ import useCart from "../hooks/useCart";
 import { useEffect, useState } from "react";
 import { CartItem } from "../@types/types";
 import CartTotals from "../components/CartPage/CartTotals";
+
 const CartPage = () => {
   const { cart } = useCart();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);

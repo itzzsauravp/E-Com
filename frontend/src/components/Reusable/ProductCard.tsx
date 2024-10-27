@@ -6,9 +6,13 @@ import { CartItem } from "../../@types/types";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addRecentlyViewedItems } from "../../../store/userSlice";
 const ProductCard: React.FC<{ items: CartItem }> = ({ items }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleViewDetails = () => {
+    dispatch(addRecentlyViewedItems(items))
     navigate(`/product/${items.id}`, {
       state: {
         product: items,
@@ -28,7 +32,7 @@ const ProductCard: React.FC<{ items: CartItem }> = ({ items }) => {
   };
 
   return (
-    <div className="h-90 flex flex-col items-center p-2 border-2 rounded-md shadow-md hover:shadow-xl duration-200 relative">
+    <div className="h-90 flex flex-col flex-1 items-center p-2 border-2 rounded-md shadow-md hover:shadow-xl duration-200 relative">
       <div className="object-fill">
         <img src={items.image} alt="" className="h-60 w-56" />
         <span
