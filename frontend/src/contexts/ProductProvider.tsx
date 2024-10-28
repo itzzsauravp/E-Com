@@ -43,7 +43,9 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
 
   const removeFromWishList = (item: Product) => {
     setStoreData((prevData) =>
-      prevData?.filter((product) => product.id !== item.id)
+      prevData?.map((product) =>
+        product.id === item.id ? { ...product, isInWishList: false } : product
+      )
     );
   };
 
