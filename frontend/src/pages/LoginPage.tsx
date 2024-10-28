@@ -49,16 +49,16 @@ const LoginPage = () => {
         <img src={loginImg} alt="" className="h-full w-full rounded-xl" />
       </div>
       <form
-        className="flex flex-col bg-slate-300 rounded-xl p-8 w-[500px]"
+        className="flex flex-col bg-slate-300 dark:bg-slate-900 rounded-xl p-8 w-[500px]"
         onSubmit={handleSubmit}
       >
         <div>
-          <h1 className="font-bold text-3xl text-center">Login</h1>
+          <h1 className="font-bold text-3xl text-center dark:text-white">Login</h1>
           {FromFields.map((field, index) => (
             <span className="flex flex-col" key={index}>
               <label
                 htmlFor="username"
-                className="text-[0.9rem] text-tLight font-arimo mt-5"
+                className="text-[0.9rem] text-tLight dark:text-white mb-1 font-arimo mt-5"
               >
                 {field.name}
               </label>
@@ -69,7 +69,7 @@ const LoginPage = () => {
                     ? userInfo.username
                     : userInfo.password
                 }
-                className="px-4 py-2 outline-none"
+                className="px-4 py-2 outline-none dark:bg-black dark:text-white dark:border-[1px] dark:border-slate-500"
                 onChange={(e) => {
                   if (field.name === "Username") {
                     handleUserName(e);
@@ -93,13 +93,13 @@ const LoginPage = () => {
                 }`}
               ></div>
             </div>
-            <span className="text-tDark font-lato">Remember Me</span>
+            <span className="text-tDark font-lato dark:text-slate-500">Remember Me</span>
           </div>
         </div>
         <input
           type="submit"
           value="Login"
-          className="mt-12 border-2 bg-etBlue border-etBlue text-white p-2 hover:bg-white hover:text-etBlue duration-200"
+          className="mt-12 border-2 bg-etBlue border-etBlue text-white p-2 hover:bg-white hover:text-etBlue dark:hover:bg-slate-800 duration-200"
         />
       </form>
     </section>

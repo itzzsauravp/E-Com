@@ -37,19 +37,19 @@ const CartTotals: React.FC<{ cartItems: CartItem[] }> = ({ cartItems }) => {
   return (
     <div className="mt-12">
       <div className="w-[30%]">
-        <h1 className="text-3xl">Cart Totals</h1>
+        <h1 className="text-3xl dark:text-white">Cart Totals</h1>
         <div>
           <p className="flex justify-between p-4 border-b-2">
-            <span className="text-tLight">Subtotal</span>
-            <span>${totalPrice}</span>
+            <span className="text-tLight dark:text-slate-500">Subtotal</span>
+            <span className="dark:text-slate-500">${totalPrice}</span>
           </p>
           <p className="flex justify-between p-4 text-tLight">
-            <span>Shipping Fee</span>
-            <span>FREE!!</span>
+            <span className="dark:text-slate-500">Shipping Fee</span>
+            <span className="dark:text-slate-500 font-bold">FREE!!</span>
           </p>
           <p className="flex justify-between p-4 border-t-2">
-            <span className="font-bold font-lato">Total</span>
-            <span className="font-bold">${totalPrice}</span>
+            <span className="font-bold font-lato dark:text-white">Total</span>
+            <span className="font-bold dark:text-white">${totalPrice}</span>
           </p>
         </div>
       </div>

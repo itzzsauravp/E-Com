@@ -14,7 +14,7 @@ const HamburgerPopOver = () => {
     }
   };
   return (
-    <div className="absolute z-10 top-8 right-2 text-[1.2rem] bg-white w-[200px] p-2 rounded-xl border-[1px] border-tLight">
+    <div className="absolute z-10 top-8 right-2 text-[1.2rem] bg-white dark:bg-slate-900 w-[200px] p-2 rounded-xl border-[1px] border-tLight">
       <ul className="text-left">
         <li
           className="p-2 flex items-center justify-between hover:bg-slate-300 rounded-md duration-200 ease-in-out"

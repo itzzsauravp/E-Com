@@ -10,10 +10,10 @@ const OrderHistory = () => {
       {orderedItems.length > 0 ? (
         orderedItems.map((item) => <ItemCard item={item!} />)
       ) : (
-        <h1 className="text-tLight">
+        <h1 className="text-tLight dark:text-slate-500">
           Opps! You dont have any ordered items <br /> Navigate to the
           <span
-            className="font-bold uppercase cursor-pointer text-tDark"
+            className="font-bold uppercase cursor-pointer text-black dark:text-white"
             onClick={() => navigate("/shop")}
           >
             {" "}

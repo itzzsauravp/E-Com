@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
 import { CartItem } from "../src/@types/types";
-
 interface UserState {
   balance: number;
   recentPurchase: CartItem[];
   userName: string;
   recentlyViewed: CartItem[];
+  userTheme: boolean;
 }
 
 const initialState: UserState = {
@@ -15,6 +15,7 @@ const initialState: UserState = {
   recentPurchase: [],
   userName: "",
   recentlyViewed: [],
+  userTheme: false,
 };
 
 const removeDuplicateItemsFromCart = (payload: CartItem[]) => {
@@ -49,6 +50,9 @@ export const userSlice = createSlice({
     getUserName: (state, action: PayloadAction<string>) => {
       state.userName = action.payload;
     },
+    toggleUserTheme: (state) => {
+      state.userTheme = !state.userTheme;
+    },
   },
 });
 
@@ -58,6 +62,7 @@ export const selectOrderHistory = (state: RootState) =>
 export const selectRecentlyViewedItems = (state: RootState) =>
   state.user.recentlyViewed;
 export const selectUserName = (state: RootState) => state.user.userName;
+export const selectTheme = (state: RootState) => state.user.userTheme;
 
 export const {
   incrementBalanceByAmount,
@@ -65,5 +70,6 @@ export const {
   addPurchaseItemsToHistory,
   getUserName,
   addRecentlyViewedItems,
+  toggleUserTheme,
 } = userSlice.actions;
 export default userSlice.reducer;

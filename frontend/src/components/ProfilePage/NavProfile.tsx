@@ -4,8 +4,8 @@ import { selectUserName } from "../../../store/userSlice";
 const NavProfile = () => {
   const userName = useSelector(selectUserName);
   return (
-    <nav className="bg-red-100 rounded-lg">
-      <h1 className="text-2xl font-semibold font-lato text-white bg-black p-6 rounded-tl-xl rounded-tr-xl">
+    <nav>
+      <h1 className="text-2xl font-semibold font-lato text-white bg-black dark:border-[1px] p-6 rounded-tl-xl rounded-tr-xl">
         {userName}
       </h1>
       <ul className="bg-slate-800 text-white space-y-12 p-4 rounded-bl-xl rounded-br-xl flex flex-col">

@@ -10,7 +10,7 @@ const NAVLink: React.FC<{ NavLinkElements: NavLinks[] }> = ({
       key={index}
       to={navLinkElement.to}
       className={({ isActive }) =>
-        `relative ${isActive ? "text-etBlue" : "text-black"}`
+        `relative ${isActive ? "text-etBlue" : "text-black dark:text-white"}`
       }
     >
       {navLinkElement.name}

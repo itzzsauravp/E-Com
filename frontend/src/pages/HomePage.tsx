@@ -9,19 +9,19 @@ const HomePage = () => {
     <section>
       <Hero img={hero} />
       <div className="text-center mt-8">
-        <h1 className="text-2xl font-bold text-tDark font-arimo">
+        <h1 className="text-2xl font-bold text-tDark font-arimo dark:text-white">
           Discover NEW Arrivals
         </h1>
-        <p className="text-tLight mt-5 font-lato">Recently added apparel!</p>
+        <p className="text-tLight dark:text-slate-400 mt-5 font-lato">Recently added apparel!</p>
       </div>
       <CardCollection isTopSeller={true} />
       <InfoCollection />
       <Schemes />
       <div className="text-center mt-8">
-        <h1 className="text-2xl font-bold text-tDark font-arimo">
+        <h1 className="text-2xl font-bold text-tDark dark:text-white font-arimo">
           Top Sellers
         </h1>
-        <p className="text-tLight mt-5 font-lato">
+        <p className="text-tLight mt-5 font-lato dark:text-slate-500">
           Browse our top-selling products
         </p>
       </div>

@@ -26,18 +26,18 @@ const CartPage = () => {
 
   return (
     <div className="mt-12 flex flex-col">
-      <span className="text-2xl text-tLight font-semibold font-lato">
+      <span className="text-2xl text-tLight font-semibold font-lato dark:text-slate-500">
         Home / Shopping Cart
       </span>
       <div className="w-full p-4 mt-12">
-        <div className="grid grid-cols-5 uppercase font-bold font-arimo">
+        <div className="grid grid-cols-5 p-4 uppercase font-bold font-arimo dark:text-white">
           {cartTitles.map((_, index) => (
             <p key={index}>{_}</p>
           ))}
         </div>
         {cartItems.map((item) => (
           <div
-            className="mt-5 grid grid-cols-5 border-t-2 border-b-2 "
+            className="mt-5 grid p-4 grid-cols-5 border-t-[1px] border-b-[1px] dark:text-white"
             key={item.id}
           >
             <p className="h-20 w-20">
@@ -53,7 +53,7 @@ const CartPage = () => {
               <input
                 value={item.quantity}
                 type="number"
-                className="w-[100px] h-8 border-2 p-1 flex items-center"
+                className="w-[100px] h-8 border-[1px] p-1 outline-none flex items-center dark:bg-black text-center"
                 onChange={(e) => handleQuantityChange(item.id, e.target.value)}
                 min="1"
               />

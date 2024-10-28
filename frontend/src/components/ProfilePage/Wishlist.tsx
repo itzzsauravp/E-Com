@@ -9,7 +9,7 @@ const Wishlist = () => {
   return (
     <>
       {wishListLength === 0 ? (
-        <h1 className="text-center text-2xl font-semibold font-arimo">
+        <h1 className="text-center text-2xl font-semibold font-arimo dark:text-white">
           No items
         </h1>
       ) : (

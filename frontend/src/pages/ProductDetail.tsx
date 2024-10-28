@@ -71,6 +71,7 @@ const ProductDetail = () => {
               mt={2}
               border="none"
               func={() => addToCart(product)}
+              uppercase={false}
             />
             <Button
               value="Add to WishList"
@@ -81,6 +82,7 @@ const ProductDetail = () => {
               mt={2}
               border="1px solid"
               func={() => addToWishList(product)}
+              uppercase={false}
             />
           </div>
           <div className="mt-5">

@@ -6,7 +6,7 @@ const AddBalance = () => {
   const dispatch = useDispatch();
   return (
     <div>
-      <h1 className="text-2xl font-semibold font-lato">
+      <h1 className="text-2xl font-semibold font-lato dark:text-white">
         Hey!! Welcome to Add Balance
       </h1>
       <p className="text-tLight">
@@ -15,7 +15,7 @@ const AddBalance = () => {
       <input
         type="number"
         value={balance}
-        className="p-2 border-[1px] border-etBlue mt-8 outline-none"
+        className="p-2 border-[1px] border-etBlue mt-8 outline-none dark:bg-black dark:text-white dark:border-white"
         // when use Number istead of parseint input field will be always 0 doesnt let you change
         // because when u remove the 0 it will bring and ""(empty string) and Number("") = 0;
         onChange={(e) => setBalance(parseInt(e.target.value))}

@@ -6,6 +6,9 @@ import { NavLinksArray, NavLinkReactIcons } from "../data/staticData";
 import { useSelector } from "react-redux";
 import { GiWallet } from "react-icons/gi";
 import { selectUserBalance } from "../../store/userSlice";
+import { CiLight } from "react-icons/ci";
+import { CiDark } from "react-icons/ci";
+import useTheme from "../hooks/useTheme";
 const NavBar = () => {
   const [hamburgerPopover, setHamburgerPopover] = useState<boolean>(false);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -14,6 +17,17 @@ const NavBar = () => {
       setHamburgerPopover(false);
     }
   };
+  const [theme, toggleTheme] = useTheme();
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    if (theme) {
+      htmlElement.classList.add("dark");
+      htmlElement.style.backgroundColor = "black";
+    } else {
+      htmlElement.classList.remove("dark");
+      htmlElement.style.backgroundColor = "white";
+    }
+  }, [theme]);
   const usersBalance = useSelector(selectUserBalance);
   useEffect(() => {
     if (hamburgerPopover) {
@@ -26,12 +40,12 @@ const NavBar = () => {
     };
   }, [hamburgerPopover]);
   return (
-    <nav className="flex items-end justify-between m-auto mt-4 mb-1 sm:max-md:flex-col sm:max-md:gap-5 sm:max-md:w-full sm:max-md:items-center">
+    <nav className="flex dark:bg-black dark:text-white items-end justify-between m-auto mb-1 sm:max-md:flex-col sm:max-md:gap-5 sm:max-md:w-full sm:max-md:items-center">
       <div className="text-3xl font-lato font-bold">NorthStar</div>
       <ul className="flex gap-5 font-bold uppercase font-arimo">
         <NAVLink NavLinkElements={NavLinksArray} />
       </ul>
-      <div className="flex gap-3 text-[1.5rem] sm:max-md:text-2xl sm:max-md:gap-10 items-center">
+      <div className="flex gap-3 text-[1.5rem] sm:max-md:text-2xl sm:max-md:gap-10 items-end">
         <NAVLink NavLinkElements={NavLinkReactIcons} />
         <button
           className="relative"
@@ -44,9 +58,20 @@ const NavBar = () => {
             </span>
           )}
         </button>
-        <span className="text-[1.2rem] text-tDark font-semibold border-2 p-2 flex items-center gap-2">
+        <span className="text-[1.2rem] text-tDark dark:text-white font-semibold border-2 border-slate-400 px-6 py-1 flex items-center gap-2 rounded-full">
           <GiWallet />: ${usersBalance.toFixed(2)}
         </span>
+        <div
+          className={`flex items-center justify-center rounded-full h-8 w-8 border-[1px] border-slate-800 ${
+            theme ? "text-white bg-[#334]" : "text-[#334] bg-white"
+          }`}
+          onClick={() => {
+            toggleTheme();
+            console.log(theme);
+          }}
+        >
+          {theme ? <CiLight /> : <CiDark />}
+        </div>
       </div>
     </nav>
   );

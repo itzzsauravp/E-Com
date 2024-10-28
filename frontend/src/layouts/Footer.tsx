@@ -3,12 +3,12 @@ import { FooterData } from "../data/staticData";
 import NewsLetter4Footer from "./NewsLetter4Footer";
 const Footer = () => {
   return (
-    <div className="bg-eSmoke">
-      <footer className="text-tLight pt-12 sm:max-md:pt-0 p-4">
+    <div className="bg-eSmoke dark:bg-black">
+      <footer className="text-tLight dark:text-slate-500 pt-12 sm:max-md:pt-0 p-4">
         <div className="grid grid-cols-4 sm:max-md:grid-cols-1 md:max-lg:grid-cols-2">
           {FooterData.map((item, index) => (
             <div className="sm:max-md:mt-8" key={index}>
-              <p className="font-arimo uppercase text-tDark">{item.title}</p>
+              <p className="font-arimo uppercase text-tDark dark:text-white">{item.title}</p>
               {item.isNewsLetter ? (
                 <NewsLetter4Footer />
               ) : (
